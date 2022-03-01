@@ -6,12 +6,20 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <link rel="shortcut icon" href="https://www.cgv.vn/media/favicon/default/cgvcinemas-vietnam-favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="<%= BASE_URL %>css/styles.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="<%= BASE_URL %>css/custom.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="<%= BASE_URL %>css/login.css" media="all" />
   </head>
-  <body>
+  <body class=" customer-account-create">
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="app"></div>
+    <div class="wrapper">
+      <div class="page">
+        <div id="app"></div>
+      </div>
+    </div>
     <!-- built files will be auto injected -->
   </body>
 </html>
