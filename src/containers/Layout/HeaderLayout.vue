@@ -44,7 +44,7 @@
         <div class="header-top-account">
           <div class="account-header-wrapper mn-login">
             <router-link to="/auth/login" class="topskip-link skip-account">
-              <span class="label"> {{ $t('message.login')}}/  {{ $t('message.register')}}</span>
+              <span class="label"> {{ $t('login')}}/  {{ $t('register')}}</span>
             </router-link>
           </div>
         </div>
@@ -88,7 +88,7 @@
             class="skip-link skip-account"
           >
             <span class="icon"></span>
-            <span class="label"> {{ $t('message.login')}}/  {{ $t('message.register')}}</span>
+            <span class="label"> {{ $t('login')}}/  {{ $t('register')}}</span>
           </a>
         </div>
       </div>
@@ -272,9 +272,9 @@
                 >Thanh toán</a
               >
             </li>
-            <li><router-link to="/auth/register"> {{ $t('message.register')}}</router-link></li>
+            <li><router-link to="/auth/register"> {{ $t('register')}}</router-link></li>
             <li class="last">
-              <router-link to="/auth/login"> {{ $t('message.login')}}</router-link>
+              <router-link to="/auth/login"> {{ $t('login')}}</router-link>
             </li>
           </ul>
         </div>

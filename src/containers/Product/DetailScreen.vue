@@ -138,8 +138,8 @@
 </template>
 
 <script>
-import HeaderLayout from "@/components/Layout/HeaderLayout.vue";
-import FooterLayout from "@/components/Layout/FooterLayout.vue";
+import HeaderLayout from "@/containers/Layout/HeaderLayout.vue";
+import FooterLayout from "@/containers/Layout/FooterLayout.vue";
 export default {
   name: "DetailScreen",
   components: {

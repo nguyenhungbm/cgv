@@ -1,48 +1,49 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeScreen from '@/components/HomeScreen.vue'
-import LoginScreen from '@/components/Auth/LoginScreen.vue'
-import RegisterScreen from '@/components/Auth/RegisterScreen.vue'
-import CategoryScreen from '@/components/Product/CategoryScreen.vue'
-import DetailScreen from '@/components/Product/DetailScreen.vue'
-import EditScreen from '@/components/Profile/EditScreen.vue'
-import MainScreen from '@/components/Profile/MainScreen.vue'
+import routerConstant from "./routerConstant";
+import HomeScreen from '@/containers/HomeScreen.vue'
+import LoginScreen from '@/containers/Auth/LoginScreen.vue'
+import RegisterScreen from '@/containers/Auth/RegisterScreen.vue'
+import CategoryScreen from '@/containers/Product/CategoryScreen.vue'
+import DetailScreen from '@/containers/Product/DetailScreen.vue'
+import EditScreen from '@/containers/Profile/EditScreen.vue'
+import MainScreen from '@/containers/Profile/MainScreen.vue'
 
 const routes = [
     {
-        path: '/',
+        path: routerConstant.START,
         name : HomeScreen,
         component : HomeScreen
     },
     {
-        path: '/auth/login',
+        path: routerConstant.LOGIN,
         name : LoginScreen,
         component : LoginScreen
     },
     {
-        path: '/auth/register',
+        path: routerConstant.REGISTER,
         name : RegisterScreen,
         component : RegisterScreen
     },
     {
-        path: '/category/:id',
+        path: routerConstant.CATEGORY_DETAIL,
         name : CategoryScreen,
         component : CategoryScreen
     },
     {
-        path: '/detail/:id',
+        path: routerConstant.PRODUCT_DETAIL,
         name : DetailScreen,
         component : DetailScreen
     },
     {
-        path: '/profile',
+        path: routerConstant.PROFILE,
         name : MainScreen,
         component : MainScreen
     },
     {
-        path: '/profile/setting',
+        path: routerConstant.SETTING_PROFILE,
         name : EditScreen,
         component : EditScreen
-    }
+    }, 
 ];
 let router = createRouter({
     history: createWebHistory(),

@@ -1,7 +1,6 @@
 import { createI18n } from 'vue-i18n'
 const messages = {
     en: {
-      message: {
         login: 'Login',
         register : 'Register',
         address : 'Address',
@@ -93,17 +92,16 @@ const messages = {
     new_password_not_match : 'New password can not match old password.',
     instagram :'Instagram', 
     chat :'Chat', 
-      }
     },
     vi: {
-      message: {
         login: 'Đăng nhập',
         register : 'Đăng ký',
         address : 'Khu vực',
         sex     : 'Giới tính',
         male     : 'Nam',
-        famale     : 'Nữ',
+        female     : 'Nữ',
         password     : 'Mật khẩu',
+        confirm_password : 'Xác nhận mật khẩu',
         phone:'Số điện thoại',
         name:'Tên',
         no_result                   : 'Không có kết quả.',
@@ -188,11 +186,10 @@ const messages = {
         new_password_not_match : 'Mật khẩu mới không được trùng mật khẩu cũ.',
         instagram :'Instagram', 
         chat :'Nhắn tin', 
-      }
     }
 }
 const i18n = new createI18n({
-    locale: 'vn', // set locale
+    locale: 'vi', // set locale
     messages, // set locale messages
   })
 export default i18n;
