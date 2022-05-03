@@ -75,7 +75,7 @@
                         ref="confirm_password"
                       /><span class="icon-eye"></span>
                       <label for="r-birthday">Ngày sinh<span>*</span></label>
-                      <DatePicker ref="birthday" id="r-birthday" dayPicker  placeholder="Select date"></DatePicker>
+                      <Datepicker v-model="birthday" :placeholder="$t('confirm_password')"></Datepicker>
                       <label for="r-fname" class="gender-title"
                         >Giới tính<span class="sp-gender">{{ $t('sex') }}</span><span> *</span>
                         <input
@@ -166,21 +166,26 @@ import HeaderLayout from "@/containers/Layout/HeaderLayout.vue"
 import FooterLayout from "@/containers/Layout/FooterLayout.vue"
 import httpRequest from "@/plugins/api/api.js"
 import listApi from "@/plugins/api/listApi.js"
+import axios from "axios";
+import Datepicker from '@vuepic/vue-datepicker';
+import '@vuepic/vue-datepicker/dist/main.css'
+
 export default {
   name: "LoginScreen",
     components: {
+        Datepicker,
         HeaderLayout,
-        FooterLayout, 
+        FooterLayout,
     },
     data() {
       return {
         errors: [],
-        username : '',
+        username : '', 
         phone : '',
         email : '',
         password : '',
         confirm_password : '',
-        birthday : '',
+        birthday : null,
         sex : '',
       }
     },
@@ -205,10 +210,18 @@ export default {
           email : this.$refs.email.value,
           password : this.$refs.password.value,
           confirm_password : this.$refs.confirm_password.value,
-          birthday : this.$refs.birthday.value,
+          birthday : this.birthday,
           sex : this.$refs.sex.value,
           // city : this.$refs.city.value,
         }
+        axios.post(listApi.MOCK_API +'/users', data)
+          .then(
+            res => console.log(res)
+          ).catch(
+            err => {
+              console.log(err);
+            }
+          )
         console.log(data);
       }
     },
