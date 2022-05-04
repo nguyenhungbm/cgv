@@ -25,14 +25,15 @@
                   >
                     <fieldset>
                       <label for="r-fname">{{ $t('name') }}<span>*</span></label>
-                      <input
+                      <Field
                         type="text"
                         id="register_fullname"
                         ref="username"
                         name="register_fullname"
-                        class="input-text required-entry"
-                         :placeholder="$t('name')"
-                        autocomplete="off"
+                        class="input-text required-entry form-control"
+                        :placeholder="$t('name')"
+                        autocomplete="off" 
+                        :rules="isRequired"
                       />
                       <label for="r-phone">{{ $t('phone') }}<span>*</span></label>
                       <input
@@ -74,6 +75,12 @@
                         autocomplete="off"
                         ref="confirm_password"
                       /><span class="icon-eye"></span>
+                       <label for="r-city">{{ $t('address') }}<span>*</span></label>
+                      <v-select  v-model="address"
+                      :options="city"
+                      :placeholder="$t('address')"
+                      label="name"
+                      class="form-control" />
                       <label for="r-birthday">Ngày sinh<span>*</span></label>
                       <Datepicker v-model="birthday" :placeholder="$t('confirm_password')"></Datepicker>
                       <label for="r-fname" class="gender-title"
@@ -94,15 +101,7 @@
                           ref="sex"
                         />
                         {{ $t('female') }}</label>
-                      <!-- <label for="r-city">{{ $t('address') }}<span>*</span></label>
-                      <v-select  v-model="selected"
-                      :options="city"
-                      :searchable="false"
-                      :close-on-select="false"
-                      :allow-empty="false"
-                      :placeholder="$t('address')"
-                      label="name"
-                      track-by="name"   /> -->
+                     
                     </fieldset>
                      
                     <div class="terms-register">
@@ -169,17 +168,20 @@ import listApi from "@/plugins/api/listApi.js"
 import axios from "axios";
 import Datepicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css'
+import {  Field } from 'vee-validate';
 
 export default {
   name: "LoginScreen",
     components: {
-        Datepicker,
-        HeaderLayout,
-        FooterLayout,
+      Datepicker,
+      HeaderLayout,
+      FooterLayout,
+      Field,
     },
     data() {
       return {
         errors: [],
+        city: [],
         username : '', 
         phone : '',
         email : '',
@@ -194,6 +196,9 @@ export default {
       await this.getCity();
     },
     methods: {
+       isRequired(value) {
+        return value ? true : 'This field is required';
+      },
       async getCity(){
         try {
           const response = await httpRequest.get(listApi.PROVINCE_API)
@@ -212,17 +217,20 @@ export default {
           confirm_password : this.$refs.confirm_password.value,
           birthday : this.birthday,
           sex : this.$refs.sex.value,
-          // city : this.$refs.city.value,
+          city : this.address,
         }
         axios.post(listApi.MOCK_API +'/users', data)
           .then(
-            res => console.log(res)
+            res => {
+              console.log(res);
+              this.$toast.success(res.statusText);
+            }
           ).catch(
             err => {
               console.log(err);
+              this.$toast.error(err);
             }
           )
-        console.log(data);
       }
     },
 };

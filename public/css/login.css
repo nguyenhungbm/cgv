@@ -250,8 +250,8 @@ display: block;
 .terms-register{
 clear: both;
 }
-.cgv-signup-form span{
-color:#e71a0f;
+.vs__dropdown-option{
+  width:100%
 }
 .cgv-register-requirement{
 color: #e71a0f
