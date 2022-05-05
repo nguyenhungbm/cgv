@@ -223,6 +223,8 @@ export default {
           .then(
             res => {
               console.log(res);
+              localStorage.setItem('token', res.data.username);
+              this.$router.push('/');
               this.$toast.success(res.statusText);
             }
           ).catch(
