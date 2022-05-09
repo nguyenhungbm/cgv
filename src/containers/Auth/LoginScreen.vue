@@ -9,17 +9,17 @@
                           <div class="r-login">
                               <h2><span id="form-login-content"  class="active"><router-link to="/auth/login"> {{ $t('login')}}</router-link></span><span id="form-register-content"><router-link to="/auth/register"> {{ $t('register')}}</router-link></span></h2>
                               <div class="cgvfc form-register-content">
-                                  <form class="cgv-signup-form" name="cgv-signup-form" id="cgv-signup-form">
+                                  <form class="cgv-signup-form" name="cgv-signup-form" id="cgv-signup-form"   @submit.prevent="pressed">
                                       <fieldset>
-                                          <label for="r-email">Email<span>*</span></label>
-                                          <input type="text" id="register_email" name="register_email" class="input-text required-entry" placeholder="Email" autocomplete="off">
-                                          <label for="r-password">Mật khẩu<span>*</span></label>
-                                          <input type="password" id="register_password" name="register_password" class="input-text required-entry" placeholder="Mật khẩu" autocomplete="new-password" ><span class="icon-eye"></span>
+                                          <label for="register_email">Email<span>*</span></label>
+                                          <input type="text" id="register_email" ref="email" class="input-text required-entry" placeholder="Email" autocomplete="off">
+                                          <label for="register_password">Mật khẩu<span>*</span></label>
+                                          <input type="password" id="register_password" ref="password" class="input-text required-entry" placeholder="Mật khẩu" autocomplete="new-password" ><span class="icon-eye"></span>
                                       </fieldset>
                                       <div class="terms-register">
                                           <label class="r-terms">
                                           <input type="checkbox" checked="checked" name="cgv-terms" id="cgv-terms" value="ok" onchange="validateForm(this.id,'terms')"> Tôi đồng ý với <a href='https://www.cgv.vn/default/terms-use/'>Điều Khoản Sử Dụng của CGV</a>          </label>
-                                          <input type="button" id="cgv-btnsignup" :value="$t('login')">
+                                          <input type="submit" id="cgv-btnsignup" :value="$t('login')">
                                       </div>
                                   </form>
                               </div>
@@ -72,12 +72,37 @@
 <script>
 import HeaderLayout from "@/containers/Layout/HeaderLayout.vue";
 import FooterLayout from "@/containers/Layout/FooterLayout.vue";
+import listApi from "@/plugins/api/listApi.js"
+import axios from "axios";
 export default {
   name: "LoginScreen",
   components: {
     HeaderLayout,
     FooterLayout,
-  },
+  },   
+ 
+    methods: {
+      pressed(e){
+        e.preventDefault();
+        const data = {
+          email : this.$refs.email.value,
+          password : this.$refs.password.value,
+        }
+        axios.post(listApi.CGV_API +'/login', data)
+          .then(
+            res => {
+              console.log(res);
+              localStorage.setItem('token', res.data.access_token);
+              this.$router.push('/');
+              this.$toast.success("Welcome");
+            }
+          ).catch(
+            err => {
+              this.$toast.error(err);
+            }
+          )
+      }
+    },
 };
 </script>
 

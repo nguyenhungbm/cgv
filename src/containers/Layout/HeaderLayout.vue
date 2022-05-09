@@ -2,10 +2,6 @@
   <div class="header-language-background">
     <div class="header-container">
       <div class="header-language-right">
-        <div class="header-career os"  v-for="entry in languages" :key="entry.title" @click="changeLocale(entry.language)">
-           <flag :iso="entry.flag" v-bind:squared=false />
-            {{entry.title}}
-        </div>
         
         <div class="header-career mn-myticket">
           <p>
@@ -42,10 +38,14 @@
           </div>
         </div>
         <div class="header-top-account">
-          <div class="account-header-wrapper mn-login">
+          <div class="account-header-wrapper mn-login" v-if="user== null">
             <router-link to="/auth/login" class="topskip-link skip-account">
               <span class="label"> {{ $t('login')}}/  {{ $t('register')}}</span>
             </router-link>
+          </div>
+          <div class="account-header-wrapper mn-login cs" v-else>
+            {{ user.name}}
+            <span v-on:click="logout"> | {{ $t('log_out')}}</span>
           </div>
         </div>
       </div>
@@ -284,19 +284,32 @@
 </template>
 <script>
 import i18n from '@/plugins/i18n/i18n'
+import axios from "axios";
+import listApi from "@/plugins/api/listApi.js"
 export default {
   name: "HeaderLayout", 
-  data() {
+   data() {
     return {
-      languages: [
-        { flag: 'us', language: 'en', title: 'English' },
-        { flag: 'vn', language: 'vi', title: 'Tiếng Việt' }
-      ]
+      user: null
     }
     },
+  async created() {
+    const res = await axios.get(listApi.CGV_API +'/user',{
+      headers:{
+        Authorization: 'Bearer' + localStorage.getItem('token')
+      }
+    });
+    this.user = res.data;
+    console.log(res.data);
+  },
     methods: {
       changeLocale(locale) {
         i18n.locale = locale;
+      },
+      logout(e) {
+        e.preventDefault();
+        localStorage.removeItem('token')
+        window.location.reload();
       }
     }
   } 

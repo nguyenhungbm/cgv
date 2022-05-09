@@ -25,7 +25,7 @@
                   >
                     <fieldset>
                       <label for="r-fname">{{ $t('name') }}<span>*</span></label>
-                      <Field
+                      <input
                         type="text"
                         id="register_fullname"
                         ref="username"
@@ -82,7 +82,7 @@
                       label="name"
                       class="form-control" />
                       <label for="r-birthday">Ngày sinh<span>*</span></label>
-                      <Datepicker v-model="birthday" :placeholder="$t('confirm_password')"></Datepicker>
+                      <Datepicker v-model="birthday" :placeholder="$t('birthday')"></Datepicker>
                       <label for="r-fname" class="gender-title"
                         >Giới tính<span class="sp-gender">{{ $t('sex') }}</span><span> *</span>
                         <input
@@ -168,7 +168,6 @@ import listApi from "@/plugins/api/listApi.js"
 import axios from "axios";
 import Datepicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css'
-import {  Field } from 'vee-validate';
 
 export default {
   name: "LoginScreen",
@@ -176,7 +175,6 @@ export default {
       Datepicker,
       HeaderLayout,
       FooterLayout,
-      Field,
     },
     data() {
       return {
@@ -210,20 +208,20 @@ export default {
       pressed(e){
         e.preventDefault();
         const data = {
-          username : this.$refs.username.value,
+          name : this.$refs.username.value,
           phone : this.$refs.phone.value,
           email : this.$refs.email.value,
           password : this.$refs.password.value,
-          confirm_password : this.$refs.confirm_password.value,
+          password_confirmation : this.$refs.confirm_password.value,
           birthday : this.birthday,
-          sex : this.$refs.sex.value,
-          city : this.address,
+          gender : this.$refs.sex.value,
+          address : this.address.code,
         }
-        axios.post(listApi.MOCK_API +'/users', data)
+        axios.post(listApi.CGV_API +'/register', data)
           .then(
             res => {
               console.log(res);
-              localStorage.setItem('token', res.data.username);
+              localStorage.setItem('token', res.data.token);
               this.$router.push('/');
               this.$toast.success(res.statusText);
             }

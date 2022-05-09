@@ -8865,8 +8865,9 @@ a:hover, a:active, a:focus {
 .mn-career,.mn-newsoffer,.mn-myticket,.mn-login{
 	position: relative;
 	margin-left: 35px;
+	margin-right: 25px;
 }
-
+.cs{cursor: pointer;}
 .mn-career::before{
     width: 25px;
     content: "";
@@ -8905,7 +8906,7 @@ a:hover, a:active, a:focus {
 	background-image: url('../image/icon_login25.png');
 	background-repeat: no-repeat;
     position: absolute;
-    left: -15px;
+    left: -30px;
     top: -4px;
     height:25px;
 }
