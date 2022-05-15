@@ -1,71 +1,33 @@
 <template>
   <HeaderLayout />
-    <div class="col1-layout">
-      <div class="main">
-          <div class="col-main">
-              <div class="account-wrap">
-                  <div class="col2-set">
-                      <div class="cgv-login-register-form">
-                          <div class="r-login">
-                              <h2><span id="form-login-content"  class="active"><router-link to="/auth/login"> {{ $t('login')}}</router-link></span><span id="form-register-content"><router-link to="/auth/register"> {{ $t('register')}}</router-link></span></h2>
-                              <div class="cgvfc form-register-content">
-                                  <form class="cgv-signup-form" name="cgv-signup-form" id="cgv-signup-form"   @submit.prevent="pressed">
-                                      <fieldset>
-                                          <label for="register_email">Email<span>*</span></label>
-                                          <input type="text" id="register_email" ref="email" value="hung@gmail.com" class="input-text required-entry" placeholder="Email" autocomplete="off">
-                                          <label for="register_password">Mật khẩu<span>*</span></label>
-                                          <input type="password" id="register_password" ref="password" value="123456" class="input-text required-entry" placeholder="Mật khẩu" autocomplete="new-password" ><span class="icon-eye"></span>
-                                      </fieldset>
-                                      <div class="terms-register">
-                                          <label class="r-terms">
-                                          <input type="checkbox" checked="checked" name="cgv-terms" id="cgv-terms" value="ok" onchange="validateForm(this.id,'terms')"> Tôi đồng ý với <a href='https://www.cgv.vn/default/terms-use/'>Điều Khoản Sử Dụng của CGV</a>          </label>
-                                          <input type="submit" id="cgv-btnsignup" :value="$t('login')">
-                                      </div>
-                                  </form>
-                              </div>
-                              <span id="error-validate"></span>
-                              <div id="correct" style="color:gray;"></div>
-                              <div id="seconds"></div>
-                          </div>
-                          <div class="l-login">
-                              <div id="slider-container">
-                                  <div class="mySlides fade">
-                                      <img src="https://www.cgv.vn/media/wysiwyg/2020/3.jpg" />
-                                  </div>
-                                  <div class="mySlides fade">
-                                      <img src="https://www.cgv.vn/media/wysiwyg/2020/1.jpg" />
-                                  </div>
-                                  <div class="mySlides fade">
-                                      <img src="https://www.cgv.vn/media/wysiwyg/2020/2.jpg" />
-                                  </div>
-                                  <!-- Next and previous buttons -->
-                                  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                                  <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                              </div>
-                              <!-- The dots/circles -->
-                              <div class="cgv-dots">
-                                  <span class="dot" onclick="currentSlide(0)"></span>
-                                  <span class="dot" onclick="currentSlide(1)"></span>
-                                  <span class="dot" onclick="currentSlide(2)"></span>
-                              </div>
-                          </div>
-                      </div>
-                      <div class="col-2">
-                          <div class="banner-login-page">
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div id="reloading-mask" style="left: -2px; top: 0px;">
-                  <p class="loader" id="loading_mask_loader">
-                      <img src="https://www.cgv.vn/skin/frontend/cgv/default/images/ajax-loader.gif" alt="Loading...">
-                      <br>Đang tải thông tin...	
-                  </p>
-              </div>
-                           
-          </div>
+    <div class="container"><br>
+<div class="login">
+<h1 class=" text-center">ĐĂNG NHẬP BẰNG</h1><br><br>
+<a href="http://localhost:9000/auth/redirect/facebook" class="  btn btn-blue"><i class="fa fa-facebook-f mr-1"></i> FACEBOOK</a>
+<a href="http://localhost:9000/auth/redirect/google" class=" btn btn-red"><i class="fa fa-google"></i>  GOOGLE</a><br>
+<br>
+<h1 class=""> HOẶC ĐĂNG NHẬP BẰNG</h1><br>
+</div>
+<form method="POST" role="form" class="col-md-8" @submit.prevent="pressed">
+  <div class="form-group ">
+    <label for="xampleInputEmail1">Email <b class="red">(*)</b> </label>
+    <input type="text" name="email" ref="email" class="form-control" id="xampleInputEmail1" value="hung@gmail.com" autocomplete="off">
       </div>
-  </div>
+
+  <div class="form-group  ">
+    <label for="xampleInputEmai1">{{ $t('password') }}<b class="red">(*)</b> </label>
+    <input type="password" ref="password" name="password" value="123456" class="form-control" id="xampleInputEmai1" autocomplete="off">
+      </div>
+  <br>
+  <div class="">
+  <input type="checkbox" name="remember" id="feafea">Nhớ mật khẩu<br><br></div>
+  <button type="submit" class="btn btn-primary">{{ $t('login') }}</button>
+   <router-link to="/" class="btn btn-danger"><i class="fa fa-undo"></i>{{ $t('back') }}</router-link><br/>
+    <router-link to="/auth/register" class="link">{{ $t('register') }}</router-link><br>
+    <a class="link" href="http://localhost:9000/account/forgot-password">{{ $t('forgot_password') }}</a><br>
+</form><br>
+
+</div>
   <FooterLayout />
 </template>
 
@@ -101,3 +63,8 @@ export default {
     },
 };
 </script>
+<style>
+.form-control{display: block;width: 70%;height: 34px;padding: 6px 12px;font-size: 14px;line-height: 1.42857143;color: #555;background-color: #fff;background-image: none;border: 1px solid #ccc;border-radius: 4px; }.container{width:50%;margin:0 auto;}.btn-danger{background-color: #d9534f;}.btn-primary{background-color: #3c8dbc !important;}.btn{display: inline-block;padding: 6px 12px;margin-bottom: 0;font-size: 14px;font-weight: 400;line-height: 1.42857143;text-align: center;white-space: nowrap;vertical-align: middle;-ms-touch-action: manipulation;touch-action: manipulation;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;background-image: none;border: 1px solid transparent;border-radius: 4px;}label{font-size: 18px;font-weight: 500;line-height:32px;color: inherit;}.red{color:red }.has-error{color:red } .has-error input{border:1px solid red}.d-none{display:none}
+.login{width: 70%;text-align: center;margin: 0 auto;color:white !important}.login h1{ font-size:25px;border-bottom:2px solid black;color:black !important}
+.btn-blue{border-radius:10px;background-color:#3578E5}.btn-red{border-radius:10px;background-color:red}.link{ color:blue;text-decoration:underline;font-size:18px;line-height:24px}.col-md-8{margin-left:10%}.container{width: 70%;}
+</style>

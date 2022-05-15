@@ -1,162 +1,95 @@
 <template>
   <HeaderLayout />
-  <div class="col1-layout">
-    <div class="main">
-      <div class="col-main">
-        <div class="account-wrap">
-          <div class="col2-set">
-            <div class="cgv-login-register-form">
-              <div class="r-login">
-                <h2>
-                  <span id="form-login-content"
-                    ><router-link to="/auth/login">
-                      {{ $t("login") }}</router-link
-                    ></span
-                  ><span id="form-register-content" class="active">
-                    {{ $t("register") }}</span
-                  >
-                </h2>
-                <div class="cgvfc form-register-content">
-                  <form
-                    class="cgv-signup-form"
-                    name="cgv-signup-form"
-                    id="cgv-signup-form"
-                    @submit.prevent="pressed"
-                  >
-                    <fieldset>
-                      <label for="r-fname">{{ $t('name') }}<span>*</span></label>
-                      <input
-                        type="text"
-                        id="register_fullname"
-                        ref="username"
-                        name="register_fullname"
-                        class="input-text required-entry form-control"
-                        :placeholder="$t('name')"
-                        autocomplete="off" 
-                        :rules="isRequired"
-                      />
-                      <label for="r-phone">{{ $t('phone') }}<span>*</span></label>
-                      <input
-                        type="text"
-                        id="register_phone"
-                        name="register_phone"
-                        class="input-text required-entry"
-                         :placeholder="$t('phone')"
-                        autocomplete="off"
-                        ref="phone"
-                      />
-                      <label for="r-email">Email<span>*</span></label>
-                      <input
-                        type="text"
-                        id="register_email"
-                        name="register_email"
-                        class="input-text required-entry"
-                        placeholder="Email"
-                        autocomplete="off"
-                        ref="email"
-                      />
-                      <label for="register_password">{{ $t('password') }}<span>*</span></label>
-                      <input
-                        type="password"
-                        id="register_password"
-                        name="register_password"
-                        class="input-text required-entry"
-                        :placeholder="$t('password')"
-                        autocomplete="new-password"
-                        ref="password"
-                      /><span class="icon-eye"></span>
-                      <label for="registers_password">{{ $t('confirm_password') }}<span>*</span></label>
-                      <input
-                        type="password"
-                        id="registers_password"
-                        name="confirm_password"
-                        class="input-text required-entry"
-                        :placeholder="$t('confirm_password')"
-                        autocomplete="off"
-                        ref="confirm_password"
-                      /><span class="icon-eye"></span>
-                       <label for="r-city">{{ $t('address') }}<span>*</span></label>
-                      <v-select  v-model="address"
-                      :options="city"
-                      :placeholder="$t('address')"
-                      label="name"
-                      class="form-control" />
-                      <label for="r-birthday">Ngày sinh<span>*</span></label>
-                      <Datepicker v-model="birthday" :placeholder="$t('birthday')"></Datepicker>
-                      <label for="r-fname" class="gender-title"
-                        >Giới tính<span class="sp-gender">{{ $t('sex') }}</span><span> *</span>
-                        <input
-                          type="radio"
-                          name="r-gender"
-                          id="male-gender"
-                          value="0"
-                          ref="sex"
-                        />
-                        {{ $t('male') }}
-                        <input
-                          type="radio"
-                          name="r-gender"
-                          id="female-gender" 
-                          value="1"
-                          ref="sex"
-                        />
-                        {{ $t('female') }}</label>
-                     
-                    </fieldset>
-                     
-                    <div class="terms-register">
-                      <input
-                        type="submit"
-                        id="cgv-btnsignup"
-                        :value="$t('register')"
-                      />
-                    </div>
-                  </form>
-                </div>
-                <span id="error-validate"></span>
-                <div id="correct" style="color: gray"></div>
-                <div id="seconds"></div>
-              </div>
-              <div class="l-login">
-                <div id="slider-container">
-                  <div class="mySlides fade">
-                    <img src="https://www.cgv.vn/media/wysiwyg/2020/3.jpg" />
-                  </div>
-                  <div class="mySlides fade">
-                    <img src="https://www.cgv.vn/media/wysiwyg/2020/1.jpg" />
-                  </div>
-                  <div class="mySlides fade">
-                    <img src="https://www.cgv.vn/media/wysiwyg/2020/2.jpg" />
-                  </div>
-                  <!-- Next and previous buttons -->
-                  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                  <a class="next" onclick="plusSlides(1)">&#10095;</a>
-                </div>
-                <!-- The dots/circles -->
-                <div class="cgv-dots">
-                  <span class="dot" onclick="currentSlide(0)"></span>
-                  <span class="dot" onclick="currentSlide(1)"></span>
-                  <span class="dot" onclick="currentSlide(2)"></span>
-                </div>
-              </div>
-            </div>
-            <div class="col-2">
-              <div class="banner-login-page"></div>
-            </div>
-          </div>
-        </div>
-        <div id="reloading-mask" style="left: -2px; top: 0px">
-          <p class="loader" id="loading_mask_loader">
-            <img
-              src="https://www.cgv.vn/skin/frontend/cgv/default/images/ajax-loader.gif"
-              alt="Loading..."
-            />
-            <br />Đang tải thông tin...
-          </p>
-        </div>
-      </div>
-    </div>
+ <div class="container"><br>
+<div class="login">
+<h1 class=" text-center">ĐĂNG NHẬP BẰNG</h1><br><br>
+<a href="http://localhost:9000/auth/redirect/facebook" class="btn btn-blue"><i class="fa fa-facebook-f mr-1"></i> FACEBOOK</a>
+<a href="http://localhost:9000/auth/redirect/google" class="btn btn-red"><i class="fa fa-google"></i>  GOOGLE</a><br>
+<br>
+<h1 class=""> HOẶC ĐĂNG KÝ TÀI KHOẢN TẠI ĐÂY</h1><br>
+</div>
+<form method="POST" class="col-md-8" @submit.prevent="pressed">
+  <div class="form-group">
+    <label for="register_fullname">{{ $t('name') }} <b class="red">(*)</b> </label>
+    <input
+      type="text"
+      id="register_fullname"
+      ref="username"
+      name="register_fullname"
+      class="input-text required-entry form-control"
+      :placeholder="$t('name')"
+      autocomplete="off" 
+      :rules="isRequired"
+    />
   </div>
+  
+  <div class="form-group">
+    <label for="register_email">Email <b class="red">(*)</b> </label>
+    <input
+      type="text"
+      id="register_email"
+      name="register_email"
+      class="input-text required-entry form-control"
+      placeholder="Email"
+      autocomplete="off"
+      ref="email"
+    />
+  </div>
+
+ <div class="form-group">
+    <label for="register_phone">Phone <b class="red">(*)</b> </label>
+    <input
+      type="text"
+      id="register_phone"
+      name="phone"
+      class="input-text required-entry form-control"
+      :placeholder="$t('phone')"
+      autocomplete="off"
+      ref="phone"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="register_password">{{ $t('password') }}<b class="red">(*)</b> </label>
+    <input
+      type="password"
+      id="register_password"
+      name="register_password"
+      class="input-text required-entry form-control"
+      :placeholder="$t('password')"
+      autocomplete="new-password"
+      ref="password"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="registers_passworsd">{{ $t('confirm_password') }}<b class="red">(*)</b> </label>
+    <input
+      type="password"
+      id="registers_passworsd"
+      name="confirm_password"
+      class="input-text required-entry form-control"
+      :placeholder="$t('confirm_password')"
+      autocomplete="off"
+      ref="confirm_password"
+    />
+  </div>
+
+  <label for="r-city">{{ $t('address') }}<span>*</span></label>
+    <v-select v-model="address" :options="city" :placeholder="$t('address')"  label="name"   />
+    <label for="r-birthday">Ngày sinh<span>*</span></label>
+    <Datepicker v-model="birthday" id="r-birthday" :placeholder="$t('birthday')" ></Datepicker>
+    <label for="r-fname" class="gender-title">{{ $t('sex') }}<span> *</span>
+    <input type="radio" name="r-gender" id="male-gender" value="0"  ref="sex" checked />{{ $t('male') }}
+    <input type="radio" name="r-gender" id="female-gender"  value="1" ref="sex" />{{ $t('female') }}</label>
+    <br>
+  <button type="submit" class="btn btn-primary">{{ $t('register') }}</button>
+  <router-link to="/" class="btn btn-danger"><i class="fa fa-undo"></i>{{ $t('back') }}</router-link><br><br>
+  <router-link to="/auth/login" class="link" >{{ $t('login') }}</router-link><br>
+  <a class="link" href="http://localhost:9000/account/forgot-password">{{ $t('forgot_password') }}</a><br>
+</form><br>
+
+</div>
   <FooterLayout />
 </template>
 
@@ -165,9 +98,10 @@ import HeaderLayout from "@/containers/Layout/HeaderLayout.vue"
 import FooterLayout from "@/containers/Layout/FooterLayout.vue"
 import httpRequest from "@/plugins/api/api.js"
 import listApi from "@/plugins/api/listApi.js"
-import axios from "axios";
 import Datepicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css'
+import { setAccessToken } from "@/plugins/utils/cookie";
+import { register } from "@/plugins/api/auth";
 
 export default {
   name: "LoginScreen",
@@ -180,13 +114,6 @@ export default {
       return {
         errors: [],
         city: [],
-        username : '', 
-        phone : '',
-        email : '',
-        password : '',
-        confirm_password : '',
-        birthday : null,
-        sex : '',
       }
     },
    
@@ -205,33 +132,32 @@ export default {
           this.errors = error.error;
       }
       },
-      pressed(e){
+      async pressed(e){
         e.preventDefault();
-        const data = {
-          name : this.$refs.username.value,
-          phone : this.$refs.phone.value,
-          email : this.$refs.email.value,
-          password : this.$refs.password.value,
-          password_confirmation : this.$refs.confirm_password.value,
-          birthday : this.birthday,
-          gender : this.$refs.sex.value,
-          address : this.address.code,
+         try {
+          const data = {
+            name : this.$refs.username.value,
+            phone : this.$refs.phone.value,
+            email : this.$refs.email.value,
+            password : this.$refs.password.value,
+            password_confirmation : this.$refs.confirm_password.value,
+            birthday : this.birthday,
+            gender : this.$refs.sex.value,
+            address : this.address.code ? this.address.code : 0,
+          }
+          const res = await register(data);
+          setAccessToken(res.access_token, res.expires_in);
+          this.$router.push('/');
+          this.$toast.success("Welcome");
+        } catch (error) {
+          console.log(error);
+          this.$toast.error(error.error);
         }
-        axios.post(listApi.CGV_API +'/register', data)
-          .then(
-            res => {
-              console.log(res);
-              localStorage.setItem('token', res.data.token);
-              this.$router.push('/');
-              this.$toast.success(res.statusText);
-            }
-          ).catch(
-            err => {
-              console.log(err);
-              this.$toast.error(err);
-            }
-          )
       }
     },
 };
 </script>
+
+<style> .form-control{display: block;width: 100%;height: 34px;padding: 6px 12px;font-size: 14px;line-height: 1.42857143;color: #555;background-color: #fff;background-image: none;border: 1px solid #ccc;border-radius: 4px; }.container{width:50%;margin:0 auto;}.btn-danger{background-color: #d9534f;}.btn-primary{background-color: #3c8dbc;}.btn{display: inline-block;padding: 6px 12px;margin-bottom: 0;font-size: 14px;font-weight: 400;line-height: 1.42857143;text-align: center;white-space: nowrap;vertical-align: middle;-ms-touch-action: manipulation;touch-action: manipulation;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;background-image: none;border: 1px solid transparent;border-radius: 4px;}label{font-size: 18px;font-weight: 500;line-height:32px;color: inherit;}.red{color:red }.has-error{color:red } .has-error input{border:1px solid red}.d-none{display:none}
+.login{width: 70%;text-align: center;margin: 0 auto;color:white !important}.login h1{ font-size:25px;border-bottom:2px solid black;color:black !important}
+.btn-blue{border-radius:10px;background-color:#3578E5}.btn-red{border-radius:10px;background-color:red}.col-md-8 {margin-left: 10% !important;}.container{width:70% !important}</style>
