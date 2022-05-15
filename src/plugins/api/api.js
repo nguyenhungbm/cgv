@@ -6,7 +6,7 @@ const headers = {
 };
 
 const axiosInstance = axios.create({
-  baseURL: process.env.MIX_API_URL,
+  baseURL: process.env.VUE_APP_API,
   headers,
 });
 

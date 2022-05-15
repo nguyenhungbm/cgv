@@ -89,7 +89,7 @@
                           type="radio"
                           name="r-gender"
                           id="male-gender"
-                          value="1"
+                          value="0"
                           ref="sex"
                         />
                         {{ $t('male') }}
@@ -97,7 +97,7 @@
                           type="radio"
                           name="r-gender"
                           id="female-gender" 
-                          value="2"
+                          value="1"
                           ref="sex"
                         />
                         {{ $t('female') }}</label>

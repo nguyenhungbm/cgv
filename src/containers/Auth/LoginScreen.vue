@@ -12,9 +12,9 @@
                                   <form class="cgv-signup-form" name="cgv-signup-form" id="cgv-signup-form"   @submit.prevent="pressed">
                                       <fieldset>
                                           <label for="register_email">Email<span>*</span></label>
-                                          <input type="text" id="register_email" ref="email" class="input-text required-entry" placeholder="Email" autocomplete="off">
+                                          <input type="text" id="register_email" ref="email" value="hung@gmail.com" class="input-text required-entry" placeholder="Email" autocomplete="off">
                                           <label for="register_password">Mật khẩu<span>*</span></label>
-                                          <input type="password" id="register_password" ref="password" class="input-text required-entry" placeholder="Mật khẩu" autocomplete="new-password" ><span class="icon-eye"></span>
+                                          <input type="password" id="register_password" ref="password" value="123456" class="input-text required-entry" placeholder="Mật khẩu" autocomplete="new-password" ><span class="icon-eye"></span>
                                       </fieldset>
                                       <div class="terms-register">
                                           <label class="r-terms">
@@ -72,8 +72,8 @@
 <script>
 import HeaderLayout from "@/containers/Layout/HeaderLayout.vue";
 import FooterLayout from "@/containers/Layout/FooterLayout.vue";
-import listApi from "@/plugins/api/listApi.js"
-import axios from "axios";
+import { setAccessToken } from "@/plugins/utils/cookie";
+import { login } from "@/plugins/api/auth";
 export default {
   name: "LoginScreen",
   components: {
@@ -82,27 +82,22 @@ export default {
   },   
  
     methods: {
-      pressed(e){
+      async pressed(e){
         e.preventDefault();
-        const data = {
-          email : this.$refs.email.value,
-          password : this.$refs.password.value,
+        try {
+          const data = {
+            email : this.$refs.email.value,
+            password : this.$refs.password.value,
+          }
+          const res = await login(data);
+          setAccessToken(res.access_token, res.expires_in);
+          this.$router.push('/');
+          this.$toast.success("Welcome");
+        } catch (error) {
+          console.log(error);
+          this.$toast.error(error.error);
         }
-        axios.post(listApi.CGV_API +'/login', data)
-          .then(
-            res => {
-              console.log(res);
-              localStorage.setItem('token', res.data.access_token);
-              this.$router.push('/');
-              this.$toast.success("Welcome");
-            }
-          ).catch(
-            err => {
-              this.$toast.error(err);
-            }
-          )
       }
     },
 };
 </script>
-
