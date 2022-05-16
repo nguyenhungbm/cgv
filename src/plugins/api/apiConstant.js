@@ -6,6 +6,9 @@ export default {
   USER: {
     PROFILE: "/users",
   },
+  HOME: {
+    LIST: "/dashboard",
+  },
   CATEGORY: {
     LIST: "/category",
     DETAIL: "/category/:id",
