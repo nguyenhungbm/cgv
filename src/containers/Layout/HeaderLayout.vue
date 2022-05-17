@@ -112,7 +112,6 @@ export default {
     this.category = cate;
     const res = await getUserProfile();
     this.user = res;
-    console.log(this.user);
    
   },
   methods: {

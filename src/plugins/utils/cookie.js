@@ -19,7 +19,6 @@ export function setAccessToken(token, expireAt) {
     path: "/",
     expires: convertTimestampToDate(expireAt),
   });
-  console.log("hi :"+ convertTimestampToDate(expireAt));
 }
 
 export function getAccessToken() {
