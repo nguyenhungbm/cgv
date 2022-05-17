@@ -93,8 +93,8 @@
 <script>
 import i18n from '@/plugins/i18n/i18n'
 import { revokeUser } from "@/plugins/utils/cookie";
-import { getUserProfile } from "@/plugins/api/auth";
 import { getListCategory } from "@/plugins/api/category";
+import { getUserInfo } from "@/plugins/utils/cookie";
 export default {
   name: "HeaderLayout", 
    data() {
@@ -110,7 +110,7 @@ export default {
   async created() {
     const cate = await getListCategory();
     this.category = cate;
-    const res = await getUserProfile();
+    const res = getUserInfo();
     this.user = res;
    
   },

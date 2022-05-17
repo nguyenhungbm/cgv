@@ -34,7 +34,7 @@
 <script>
 import HeaderLayout from "@/containers/Layout/HeaderLayout.vue";
 import FooterLayout from "@/containers/Layout/FooterLayout.vue";
-import { setAccessToken } from "@/plugins/utils/cookie";
+import { setAccessToken, setUserInfo } from "@/plugins/utils/cookie";
 import { login } from "@/plugins/api/auth";
 export default {
   name: "LoginScreen",
@@ -52,6 +52,7 @@ export default {
             password : this.$refs.password.value,
           }
           const res = await login(data);
+          setUserInfo(res, res.expires_in);
           setAccessToken(res.access_token, res.expires_in);
           this.$router.push('/');
           this.$toast.success("Welcome");
