@@ -36,4 +36,5 @@ export function revokeUser() {
     path: "/",
   };
   cookie.remove("token", options);
+  cookie.remove("userInfo", options);
 }

@@ -52,8 +52,9 @@ export default {
             password : this.$refs.password.value,
           }
           const res = await login(data);
-          setUserInfo(res, res.expires_in);
-          setAccessToken(res.access_token, res.expires_in);
+          const { user, expires_in, token} = res;
+          setUserInfo(user, expires_in);
+          setAccessToken(token, expires_in);
           this.$router.push('/');
           this.$toast.success("Welcome");
         } catch (error) {

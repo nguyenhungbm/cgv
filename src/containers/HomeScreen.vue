@@ -12,7 +12,7 @@
         <div class="tabContent">
           <div id="tab1" class="tab active">
             <div class="group slide"> 
-              <!-- @include('layout.component.product_item',['product'=>$product]) -->
+              <ListProduct :products="list.productsWatch"/>
             </div>
           </div>
           <div id="tab2" class="tab">
@@ -247,8 +247,8 @@
           PHILIPPE AUGUSTE
         </a>
       </h2>
-      <div class="group slide"  v-for="product in list.listProduct1" :key="product.id">
-        <ListProduct/>  
+      <div class="group slide" >
+        <ListProduct :products="list.listProduct1"/>  
       </div>
     </div>
   </div>
@@ -260,9 +260,7 @@
         </a>
       </h2>
       <div class="group slide">
-        @foreach($listProduct2 as $list)                
-          @include('layout.component.list_product',['list'=>$list])     
-        @endforeach           
+        <ListProduct :products="list.listProduct2"/>
       </div>
     </div>
   </div>
@@ -289,9 +287,7 @@
         </h2>
       </div>
       <div class="group slide3">
-        @foreach($listProduct3 as $list)                
-          @include('layout.component.list_product',['list'=>$list])     
-        @endforeach  
+        <ListProduct :products="list.listProduct3"/>
       </div> 
     </div>
   </div>
@@ -303,9 +299,7 @@
         </a>
       </h2>
       <div class="group slide">
-        @foreach($listProduct4 as $list)                
-          @include('layout.component.list_product',['list'=>$list])     
-        @endforeach  
+        <ListProduct :products="list.listProduct4"/>  
       </div>
     </div>
   </div>
@@ -318,9 +312,7 @@
           </a>
         </h2>
         <div class="group slide">
-          @foreach($listProduct5 as $list)                
-            @include('layout.component.list_product',['list'=>$list])     
-          @endforeach  
+          <ListProduct :products="list.listProduct5"/>  
         </div>
     </div>
   </div>
@@ -364,9 +356,7 @@
             </div>
           </div>
         </div>
-          @foreach($listProduct6 as $list)                
-            @include('layout.component.list_product',['list'=>$list])     
-          @endforeach  
+          <ListProduct :products="list.listProduct6"/>
       </div>
     </div>
   </div>
