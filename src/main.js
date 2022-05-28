@@ -7,6 +7,7 @@ import vSelect from 'vue-select'
 import './index.css'
 import VueToast from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-sugar.css';
+import EasySlider from 'vue-easy-slider'
 
 let app = createApp(App)
 app.component('v-select', vSelect)
@@ -16,3 +17,4 @@ app.use(VueToast,{
 app.use(i18n)
 app.use(router)
 app.mount('#app')
+app.use(EasySlider)

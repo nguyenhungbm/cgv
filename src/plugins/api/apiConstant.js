@@ -15,6 +15,6 @@ export default {
   },
   PRODUCT: {
     LIST: "/product",
-    DETAIL: "/product/:id",
+    DETAIL: "/product/",
   },
 };
