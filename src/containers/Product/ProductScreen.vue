@@ -58,15 +58,15 @@
             <div class="detail">
                <div class="otherPro slideRes">
                   <h3 class="title">Có thể bạn sẽ thích</h3>
-                  <div class="group">
+                  <div class="group slide">
                     <div class="item"  v-for="list in product.productSuggest" :key="list.id">
                       <div class="wImage">
-                        <a href="http://localhost:9000/sp/dong-ho-philippe-auguste-pa5004a-24" class="image">
+                        <a :href="'/product/' + list.pro_slug" class="image">
                           <img :data-src="list.pro_avatar" alt="Đồng hồ Philippe Auguste PA5004A" class="lazy" :src="list.pro_avatar">
                         </a>                 
                       </div>
                       <h3 class="info">
-                        <a href="http://localhost:9000/sp/dong-ho-philippe-auguste-pa5004a-24" class="name">
+                        <a :href="'/product/' + list.pro_slug" class="name">
                           {{list.pro_name}}           
                         </a>
                         <div class="price">

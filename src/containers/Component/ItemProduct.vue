@@ -1,7 +1,5 @@
 <template>
-<carousel :items-to-show="5" :wrap-around="true">
-<slide v-for="product in products" :key="product.id">   
-  <div class="item">
+  <div class="item"  v-for="product in products.data" :key="product.id">
     <div class="wImage">
       <WrapperImage @click="goToDetailProduct(product.pro_slug)">
         <img :src="product.pro_avatar" class="lazy"/>
@@ -23,27 +21,15 @@
       </WrapperProgress>
     </div>
   </div>
-</slide>
-
-    <template #addons>
-      <navigation />
-    </template>
-  </carousel>
-
 </template>
 <script>
 import 'vue3-carousel/dist/carousel.css';
-import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
 import * as Styled from "./styled";
 
 export default {
-    name: "ListProduct", 
+    name: "ItemProduct", 
     props: ['products'],
     components: {
-      Carousel,
-      Slide,
-      Pagination,
-      Navigation,
       WrapperImage: Styled.WrapperImage,
       WrapperProgress: Styled.WrapperProgress,
     },

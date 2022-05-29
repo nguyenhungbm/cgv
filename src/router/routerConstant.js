@@ -2,7 +2,7 @@ export default {
   START: "/",
   LOGIN: '/auth/login',
   REGISTER: '/auth/register',
-  CATEGORY_DETAIL: '/category/:id',
+  CATEGORY_DETAIL: '/category/:slug',
   PRODUCT_DETAIL: '/product/:slug',
   PROFILE: '/profile',
   SETTING_PROFILE: '/profile/setting',

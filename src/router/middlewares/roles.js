@@ -3,9 +3,8 @@ import { revokeUser } from "@/plugins/utils/cookie";
 export function guest(context) {
   const { next, isLoggedIn } = context;
   if (isLoggedIn) {
-    return next({ name: "Start" });
+    return next();
   }
-  return next();
 }
 
 export function auth(context) {
@@ -14,5 +13,6 @@ export function auth(context) {
     return next();
   }
   revokeUser();
-  window.location.reload();
+  return next({ name: "LoginScreen" });
 }
+ 

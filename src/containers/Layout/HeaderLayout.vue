@@ -1,6 +1,6 @@
 <template>
-  <!-- <div id='status'></div>
-<div id='loader'></div> -->
+  <div id='status' v-if="isLoading"></div>
+<div id='loader' v-if="isLoading"></div>
 <div id="commonHead">   
     <div class="wrp">
         <h1 class="textLeft dnTablet-l">Đồng hồ nam, Đẳng cấp thương hiệu</h1>
@@ -11,8 +11,8 @@
             </div>     
         </form>   
         <ul class="menuRight dnTablet-l" v-if="user != null">
-          <li><a href="" title="Home">Đơn hàng</a></li>
-          <li><a href="">{{ user.name}}</a></li>
+          <li><a href="javascript:;" @click="goToDetailCategory(cate.c_slug)" title="Home">Đơn hàng</a></li>
+          <li><a href="javascript:;" @click="goToDetailCategory(cate.c_slug)">{{ user.name}}</a></li>
           <li><a href="javascript:;" v-on:click="logout">Đăng xuất</a></li>
         </ul>
         <ul class="menuRight dnTablet-l" v-else>
@@ -35,7 +35,7 @@
                             <div class="subMenu" style="width: 250px;">                                             
                                 <div class="group">                                       
                                     <div class="item" v-for="cate in category" :key="cate.id">
-                                      <a href="" v-if="cate.c_cate == 'watch'" >{{ cate.c_name }}</a>
+                                      <a href="javascript:;" @click="goToDetailCategory(cate.c_slug)" v-if="cate.c_cate == 'watch'" >{{ cate.c_name }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +49,7 @@
                             <div class="subMenu" style="width: 250px;">
                                 <div class="group">                                        
                                    <div class="item" v-for="cate in category" :key="cate.id">
-                                      <a href="" v-if="cate.c_cate == 'glass'" >{{ cate.c_name }}</a>
+                                      <a href="javascript:;" @click="goToDetailCategory(cate.c_slug)" v-if="cate.c_cate == 'glass'" >{{ cate.c_name }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -63,7 +63,7 @@
                             <div class="subMenu" style="width: 250px;">                                   
                                 <div class="group">                                       
                                    <div class="item" v-for="cate in category" :key="cate.id">
-                                      <a href="" v-if="cate.c_cate == 'accessories'" >{{ cate.c_name }}</a>
+                                      <a href="javascript:;" @click="goToDetailCategory(cate.c_slug)" v-if="cate.c_cate == 'accessories'" >{{ cate.c_name }}</a>
                                     </div>
                                 </div> 
                             </div>
@@ -82,7 +82,7 @@
                     <span class="bot">1800 0000</span>
                 </span>
             </a>
-            <a href="" class="btnCart">
+            <a href="javascript:;" @click="goToDetailCategory(cate.c_slug)" class="btnCart">
                 <i class="fa fa-shopping-cart"></i>
                 <span class="number">0</span>
             </a>
@@ -100,19 +100,18 @@ export default {
    data() {
     return {
       user: null,
-      category : []
+      category : [],
+      isLoading: true
     }
   },
   mounted() {
-    // jQuery("#status").fadeOut();
-    // jQuery("#loader").fadeOut();
+    setTimeout(() => this.isLoading = false, 2000);
   },
-  async created() {
+  async created() { 
     const cate = await getListCategory();
-    this.category = cate;
+    this.category = cate.category;
     const res = getUserInfo();
     this.user = res;
-   
   },
   methods: {
     changeLocale(locale) {
@@ -122,7 +121,15 @@ export default {
       e.preventDefault();
       revokeUser();
       window.location.reload();
-    }
+    },
+    goToDetailCategory(slug){
+        this.$router.push({
+        name: "CategoryScreen",
+        params: {
+        slug: `${slug}`,
+        },
+    })
   }
   } 
+} 
 </script>

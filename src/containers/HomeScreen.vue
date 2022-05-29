@@ -11,9 +11,7 @@
         </ul>
         <div class="tabContent">
           <div id="tab1" class="tab active">
-            <div class="group slide"> 
               <ListProduct :products="list.productsWatch"/>
-            </div>
           </div>
           <div id="tab2" class="tab">
             <div class="group slide">
@@ -247,9 +245,8 @@
           PHILIPPE AUGUSTE
         </a>
       </h2>
-      <div class="group slide" >
+      
         <ListProduct :products="list.listProduct1"/>  
-      </div>
     </div>
   </div>
   <div class="product pb20">
@@ -259,9 +256,7 @@
           <span class="icon"><img data-src="/view/img/icon1.png" alt="Diamond D" class="lazy" src="/view/lazy.jpg"/></span>Đồng hồ Diamond D
         </a>
       </h2>
-      <div class="group slide">
         <ListProduct :products="list.listProduct2"/>
-      </div>
     </div>
   </div>
 
@@ -286,9 +281,7 @@
           <a href="/sp/dong-ho-epos-swiss.html" title="Epos Swiss" class="viewAll">Xem tất cả <i class="fa fa-chevron-right"></i></a>
         </h2>
       </div>
-      <div class="group slide3">
         <ListProduct :products="list.listProduct3"/>
-      </div> 
     </div>
   </div>
   <div class="product pt10">
@@ -298,9 +291,7 @@
           <span class="icon"><img data-src="/view/img/icon1.png" class="lazy" src="/view/lazy.jpg"/></span>JACQUES LEMANS
         </a>
       </h2>
-      <div class="group slide">
         <ListProduct :products="list.listProduct4"/>  
-      </div>
     </div>
   </div>
   <div class="product pb20">
@@ -311,55 +302,9 @@
               ĐỒNG HỒ ARIES GOLD
           </a>
         </h2>
-        <div class="group slide">
           <ListProduct :products="list.listProduct5"/>  
-        </div>
     </div>
-  </div>
-  <div class="product product3">
-    <div class="wrp">
-      <div class="bannerMain">
-        <div class="wImage dnTablet-l">
-          <a href="/sp/dong-ho-atlantic-swiss.html" title="Atlantic Swiss" class="image cover">
-            <img data-src="/view/img/AT1.jpg" alt="Atlantic" class="lazy" src="/view/lazy.jpg"/> 
-          </a>
-        </div>
-        <div class="wImage dn dbtablet-l">
-          <a href="/sp/dong-ho-atlantic-swiss.html" title="Epos" class="image cover"> 
-            <img data-src="/view/img/AT2.jpg" alt="Atlantic" class="lazy" src="/view/lazy.jpg"/>
-          </a>
-        </div>
-        <h3 class="info">
-          <a href="/sp/dong-ho-atlantic-swiss.html" title="Atlantic Swiss" class="name">
-            <span>Đồng hồ Thụy Sỹ</span>
-            <span>Atlantic Swiss</span>
-          </a>
-          <a href="/sp/dong-ho-atlantic-swiss.html" title="Atlantic Swiss" class="viewAll">Xem tất cả <i class="fa fa-chevron-right"></i></a>
-        </h3>
-      </div>
-      <div class="group slide3">
-        <div class="item">
-          <div class="wImage">
-            <a href="/sp/10200/dong-ho-atlantic-swiss-at-603424561.html" title="" class="image">
-              <img data-src="https://www.dangquangwatch.vn//upload/product_small/1117745815_dong-ho-chinh-hang-1.jpg" alt="Dong ho Atlantic" class="lazy" src="/view/lazy.jpg"/>
-            </a>                    
-          </div>
-          <div class="info">  
-            <p>40mm | 5ATM | Sapphire</p>                  
-            <a href="/sp/10200/dong-ho-atlantic-swiss-at-603424561.html" title="Đồng hồ Atlantic Swiss AT-60342.45.61" class="name">Đồng hồ Atlantic Swiss AT-60342.45.61 - Nam</a>
-            <div class="price">
-              <p class="new">8.390.000đ</p>
-            </div>
-            <div class="count">
-              <div class="bg" style="width: 18%"></div>
-              <span class="text">Còn lại 72</span>
-            </div>
-          </div>
-        </div>
-          <ListProduct :products="list.listProduct6"/>
-      </div>
-    </div>
-  </div>
+  </div> 
   <div id="serviceSup">
     <div class="wrp">
       <div class="group">

@@ -11,7 +11,7 @@ export default {
   },
   CATEGORY: {
     LIST: "/category",
-    DETAIL: "/category/:id",
+    PRODUCT: "/danh-muc/",
   },
   PRODUCT: {
     LIST: "/product",

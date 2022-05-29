@@ -7,14 +7,17 @@ import vSelect from 'vue-select'
 import './index.css'
 import VueToast from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-sugar.css';
-import EasySlider from 'vue-easy-slider'
+import VPagination from "@hennge/vue3-pagination";
+import "@hennge/vue3-pagination/dist/vue3-pagination.css"
 
 let app = createApp(App)
 app.component('v-select', vSelect)
+app.component('v-pagination', VPagination)
 app.use(VueToast,{
   position: 'top'
 });
 app.use(i18n)
 app.use(router)
+
+
 app.mount('#app')
-app.use(EasySlider)
