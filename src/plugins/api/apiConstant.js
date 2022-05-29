@@ -17,4 +17,10 @@ export default {
     LIST: "/product",
     DETAIL: "/product/",
   },
+  CART: {
+    DETAIL: "/shopping/don-hang/",
+    ADD: "/shopping/add/",
+    UPDATE: "/shopping/update/",
+    DELETE: "/shopping/delete/",
+  },
 };

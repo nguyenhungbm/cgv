@@ -13,7 +13,7 @@
         <img style="width:15.96px;height:15.96px" src="//laz-img-cdn.alicdn.com/tfs/TB18ZvEgfDH8KJjy1XcXXcpdXXa-64-64.png"> 
       </div>
       <div class="price">
-        <p class="new">{{product.pro_price}} đ</p>
+        <p class="new">{{ formatMoney(product.pro_price) }} đ</p>
       </div>
       <WrapperProgress :maxWidth="randomNumber() + '%'">
         <div class="process"></div>
@@ -42,9 +42,14 @@ export default {
           },
         })
       },
-    randomNumber : function(){
-      return Math.floor(Math.random() * (100 - 10 + 10)) + 10;
-    }
+      randomNumber : function(){
+        return Math.floor(Math.random() * (100 - 10 + 10)) + 10;
+      },
+      formatMoney(money){
+        var formatter = new Intl.NumberFormat('en-US', {
+        });
+        return formatter.format(money);
+      }
     }
   }
 </script>

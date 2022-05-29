@@ -8,25 +8,20 @@
             <span>Giá: </span>
             <div class="lstPrice">
               <ul>
-                <li class="">
-                  <a href="http://localhost:9000/san-pham/kinh-mat-diamond-d-11?price=1"> Dưới 2 triệu</a>
+                <li @click="filterPrice(0)">
+                  <a href="javascript:;"> Dưới 2 triệu</a>
                 </li>
-
-                <li class="">
-                  <a href="http://localhost:9000/san-pham/kinh-mat-diamond-d-11?price=2 ">Từ 2 triệu - 5 triệu</a>
+                <li @click="filterPrice(1)">
+                  <a href="javascript:; ">Từ 2 triệu - 5 triệu</a>
                 </li>
-
-                <li class="">
-                  <a href="http://localhost:9000/san-pham/kinh-mat-diamond-d-11?price=5 ">Từ 5 triệu - 10 triệu</a>
+                <li @click="filterPrice(2)">
+                  <a href="javascript:; ">Từ 5 triệu - 10 triệu</a>
                 </li>
-
-                <li class="">
-                  <a href="http://localhost:9000/san-pham/kinh-mat-diamond-d-11?price=10 ">Từ 10 triệu - 25 triệu</a>
+                <li @click="filterPrice(3)">
+                  <a href="javascript:; ">Từ 10 triệu - 25 triệu</a>
                 </li>
-
-
-                <li class="">
-                  <a href="http://localhost:9000/san-pham/kinh-mat-diamond-d-11?price=50 ">Trên 50 triệu</a>
+                <li @click="filterPrice(4)">
+                  <a href="javascript:; ">Trên 50 triệu</a>
                 </li>
               </ul>
             </div>
@@ -85,6 +80,7 @@ import HeaderLayout from "@/containers/Layout/HeaderLayout.vue";
 import FooterLayout from "@/containers/Layout/FooterLayout.vue";
 import ItemProduct from "@/containers/Component/ItemProduct.vue"
 import { getListProductInCategory } from "@/plugins/api/category";
+import { filter } from "lodash";
 export default {
   name: "CategoryScreen",
    data() {
@@ -99,10 +95,19 @@ export default {
     ItemProduct
   },
   async created() {
-    const list = await getListProductInCategory(this.slug);
-    this.products = list.products;
-    console.log(this.products);
-  },
+    const response = await getListProductInCategory(this.slug);
+    this.products = response.products;
+},
+  methods: {
+    updateHandler(number){
+      alert(number);
+    },
+    filterPrice(value){
+       this.products =null;
+       console.log(this.products);
+       return true;
+    },
+  }
 };
 </script>
 

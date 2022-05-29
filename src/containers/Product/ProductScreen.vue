@@ -23,7 +23,7 @@
                <div class="price">
                   <div class="price1">
                      <span class="text">Giá niêm yết </span>
-                     <span class="numb cc4161c"> {{ product.product.pro_price }}đ</span>
+                     <span class="numb cc4161c"> {{ formatMoney(product.product.pro_price) }}đ</span>
                                        </div>
                </div>
                <h3 class="descript">
@@ -45,13 +45,11 @@
                   </div>
                </h3>
                <div class="btnCart">
-                  <a class="muangay" href="http://localhost:9000/add/11">
+                  <a class="muangay" href="javascript:;" @click="addCard(product.product)">
                      <span>Mua ngay</span>
                      <span>Giao hàng miễn phí - Thanh toán tại nhà</span>
                   </a>
                </div>
-
-                                             <p></p>
             </div>
          </div>
          <div class="bot">
@@ -70,7 +68,7 @@
                           {{list.pro_name}}           
                         </a>
                         <div class="price">
-                            <p class="new">{{list.pro_price}} đ</p>                  
+                            <p class="new">{{ formatMoney(list.pro_price) }} đ</p>                  
                         </div>
                       </h3>
                   </div> 
@@ -171,7 +169,7 @@
                            <a href="javascript://" class="name">
                               {{ product.product.pro_name }}
                            </a>
-                           <p class="price">  {{ product.product.pro_price }}đ </p>
+                           <p class="price">  {{ formatMoney(product.product.pro_price) }}đ </p>
                         </div>
                      </div>
                      <div class="lstBtn">
@@ -240,6 +238,7 @@
 import HeaderLayout from "@/containers/Layout/HeaderLayout.vue";
 import FooterLayout from "@/containers/Layout/FooterLayout.vue";
 import { getDetailProduct } from "@/plugins/api/product";
+import { addCart } from "@/plugins/api/cart";
 export default {
   name: "ProductScreen",
    data() {
@@ -257,6 +256,21 @@ export default {
     this.product = detailProduct;
     console.log(this.product)
   },
+   methods: {
+      formatMoney(money){
+         var formatter = new Intl.NumberFormat('en-US', {
+         });
+         return formatter.format(money);
+      },
+      async addCard(product){
+         try {
+            const res = await addCart(product.id);
+            this.$toast.success('Success');
+         } catch (error) {
+            this.$toast.error(error.message);
+         }
+      }
+   }
 };
 </script>
 

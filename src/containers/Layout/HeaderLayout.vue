@@ -1,6 +1,5 @@
 <template>
-  <div id='status' v-if="isLoading"></div>
-<div id='loader' v-if="isLoading"></div>
+<Spinner v-if="isLoading" />
 <div id="commonHead">   
     <div class="wrp">
         <h1 class="textLeft dnTablet-l">Đồng hồ nam, Đẳng cấp thương hiệu</h1>
@@ -95,6 +94,7 @@ import i18n from '@/plugins/i18n/i18n'
 import { revokeUser } from "@/plugins/utils/cookie";
 import { getListCategory } from "@/plugins/api/category";
 import { getUserInfo } from "@/plugins/utils/cookie";
+import Spinner from "@/components/Spinner"
 export default {
   name: "HeaderLayout", 
    data() {
@@ -104,6 +104,9 @@ export default {
       isLoading: true
     }
   },
+	components: {
+		Spinner
+	},
   mounted() {
     setTimeout(() => this.isLoading = false, 2000);
   },
