@@ -2,9 +2,7 @@ import { revokeUser } from "@/plugins/utils/cookie";
 
 export function guest(context) {
   const { next, isLoggedIn } = context;
-  if (isLoggedIn) {
-    return next();
-  }
+  return next();
 }
 
 export function auth(context) {
