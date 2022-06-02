@@ -1,5 +1,5 @@
 <template>
-  <div class="item"  v-for="product in products.data" :key="product.id">
+  <div class="item"  v-for="product in products" :key="product.id">
     <div class="wImage">
       <WrapperImage @click="goToDetailProduct(product.pro_slug)">
         <img :src="product.pro_avatar" class="lazy"/>

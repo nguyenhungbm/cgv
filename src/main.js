@@ -9,6 +9,7 @@ import VueToast from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-sugar.css';
 import VPagination from "@hennge/vue3-pagination";
 import "@hennge/vue3-pagination/dist/vue3-pagination.css"
+import Vuex from 'vuex'
 
 let app = createApp(App)
 app.component('v-select', vSelect)
@@ -16,6 +17,7 @@ app.component('v-pagination', VPagination)
 app.use(VueToast,{
   position: 'top'
 });
+app.use(Vuex)
 app.use(i18n)
 app.use(router)
 

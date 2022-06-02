@@ -127,9 +127,9 @@ export default {
     },
     goToDetailCategory(slug){
         this.$router.push({
-        name: "CategoryScreen",
-        params: {
-        slug: `${slug}`,
+            name: "CategoryScreen",
+            params: {
+            slug: `${slug}`,
         },
     })
   }

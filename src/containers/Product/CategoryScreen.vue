@@ -60,7 +60,7 @@
     </div> 
     <div class="product">
       <div class="group active">
-        <ItemProduct :products="products"/>
+        <ItemProduct :products="productFilter"/>
          <v-pagination
             v-model="page"
             :pages="10"
@@ -86,6 +86,7 @@ export default {
    data() {
     return {
       products: [],
+      productFilter: [],
       slug : this.$route.params.slug
     }
   },
@@ -96,16 +97,28 @@ export default {
   },
   async created() {
     const response = await getListProductInCategory(this.slug);
-    this.products = response.products;
+    this.products = response.products.data;
+    this.productFilter = this.products;
+    console.log("products : " + this.products);
 },
   methods: {
     updateHandler(number){
       alert(number);
     },
     filterPrice(value){
-       this.products =null;
-       console.log(this.products);
-       return true;
+      if (value == 0) {
+        this.productFilter = this.products.filter((pro) => pro.pro_price < 2000000 );
+      } else if (value == 1) {
+        this.productFilter = this.products.filter((pro) =>  pro.pro_price > 2000000 || pro.pro_price < 5000000 );
+      } else if (value == 2) {
+        this.productFilter = this.products.filter((pro) =>  pro.pro_price > 5000000 || pro.pro_price < 10000000 );
+      } else if (value == 3) {
+        this.productFilter = this.products.filter((pro) =>  pro.pro_price > 10000000 || pro.pro_price < 50000000 );
+      } else if (value == 4) {
+        this.productFilter = this.products.filter((pro) =>   pro.pro_price > 50000000 );
+      }
+      console.log("products2 : " + this.productFilter);
+      return true;
     },
   }
 };
