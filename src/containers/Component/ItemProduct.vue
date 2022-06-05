@@ -1,4 +1,5 @@
 <template>
+  <img src="/view/img/no_result.jpg" v-if="!products.length"/>
   <div class="item"  v-for="product in products" :key="product.id">
     <div class="wImage">
       <WrapperImage @click="goToDetailProduct(product.pro_slug)">

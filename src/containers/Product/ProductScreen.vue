@@ -253,7 +253,7 @@ export default {
   },
   async created() {
     const detailProduct = await getDetailProduct(this.slug);
-    this.product = detailProduct;
+    this.product = detailProduct;   
     console.log(this.product)
   },
    methods: {
