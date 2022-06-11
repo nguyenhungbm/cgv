@@ -38,6 +38,7 @@ axiosInstance.interceptors.response.use(
     const errorData = get(error, "response.data");
     switch (status) {
       case StatusCode.Unauthorized: {
+        revokeUser();
         window.location.reload(); 
         break;
       }
