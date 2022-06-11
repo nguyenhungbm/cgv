@@ -2,6 +2,7 @@ import axios from "axios";
 import { get } from "lodash";
 import { getAccessToken } from "@/plugins/utils/cookie";
 import { StatusCode } from "@/plugins/const/app";
+import { revokeUser } from "@/plugins/utils/cookie";
 
 const headers = {
   Accept: "application/json",
@@ -37,6 +38,7 @@ axiosInstance.interceptors.response.use(
     const errorData = get(error, "response.data");
     switch (status) {
       case StatusCode.Unauthorized: {
+        window.location.reload(); 
         break;
       }
       case StatusCode.ValidationFailed:

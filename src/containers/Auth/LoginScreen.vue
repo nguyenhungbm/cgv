@@ -11,12 +11,12 @@
 <form method="POST" role="form" class="col-md-8" @submit.prevent="pressed">
   <div class="form-group ">
     <label for="xampleInputEmail1">Email <b class="red">(*)</b> </label>
-    <input type="text" name="email" ref="email" class="form-control" id="xampleInputEmail1" value="hung@gmail.com" autocomplete="off">
+    <input type="text" name="email" ref="email" class="form-control" id="xampleInputEmail1" value="user@gmail.com" autocomplete="off">
       </div>
 
   <div class="form-group  ">
     <label for="xampleInputEmai1">{{ $t('password') }}<b class="red">(*)</b> </label>
-    <input type="password" ref="password" name="password" value="123456" class="form-control" id="xampleInputEmai1" autocomplete="off">
+    <input type="password" ref="password" name="password" value="123456789" class="form-control" id="xampleInputEmai1" autocomplete="off">
       </div>
   <br>
   <div class="">
@@ -58,7 +58,6 @@ export default {
           this.$router.push('/');
           this.$toast.success("Welcome");
         } catch (error) {
-          console.log(error);
           this.$toast.error(error.error);
         }
       }

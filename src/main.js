@@ -8,7 +8,7 @@ import './index.css'
 import VueToast from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-sugar.css';
 import VPagination from "@hennge/vue3-pagination";
-import "@hennge/vue3-pagination/dist/vue3-pagination.css"
+import "@hennge/vue3-pagination/dist/vue3-pagination.css" 
 import Vuex from 'vuex'
 
 let app = createApp(App)

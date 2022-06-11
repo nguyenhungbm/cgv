@@ -150,7 +150,6 @@ export default {
           this.$router.push('/');
           this.$toast.success("Welcome");
         } catch (error) {
-          console.log(error);
           this.$toast.error(error.error);
         }
       }

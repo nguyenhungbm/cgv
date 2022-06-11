@@ -92,3 +92,9 @@
 .fas{
     display:none !important
 }
+.active {
+    color: #288ad6;
+}
+.info{
+    color : black
+}

@@ -7,6 +7,7 @@ const RegisterScreen = () => import('@/containers/Auth/RegisterScreen.vue')
 const CategoryScreen = () => import('@/containers/Product/CategoryScreen.vue')
 const ProductScreen = () => import('@/containers/Product/ProductScreen.vue')
 const EditScreen = () => import('@/containers/Profile/EditScreen.vue')
+const OrderScreen = () => import('@/containers/Profile/OrderScreen.vue')
 const MainScreen = () => import('@/containers/Profile/MainScreen.vue')
 import {auth,guest, middlewarePipeline} from "./middlewares";
 const routes = [
@@ -64,6 +65,14 @@ const routes = [
         component : EditScreen,
         meta: {
             middleware: [guest],
+        },
+    }, 
+    {
+        path: routerConstant.ORDER.LIST,
+        name : 'OrderScreen',
+        component : OrderScreen,
+        meta: {
+            middleware: [auth],
         },
     }, 
     {

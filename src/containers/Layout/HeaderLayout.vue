@@ -10,7 +10,7 @@
             </div>     
         </form>   
         <ul class="menuRight dnTablet-l" v-if="user != null">
-          <li><a href="javascript:;" @click="goToDetailCategory(cate.c_slug)" title="Home">Đơn hàng</a></li>
+          <li><router-link to="/order" title="Home">Đơn hàng</router-link></li>
           <li><a href="javascript:;" @click="goToDetailCategory(cate.c_slug)">{{ user.name}}</a></li>
           <li><a href="javascript:;" v-on:click="logout">Đăng xuất</a></li>
         </ul>
@@ -123,14 +123,14 @@ export default {
     logout(e) {
       e.preventDefault();
       revokeUser();
-      window.location.reload();
+      window.location.reload(); 
     },
     goToDetailCategory(slug){
         this.$router.push({
             name: "CategoryScreen",
-            params: {
-            slug: `${slug}`,
-        },
+            query: {
+                slug: `${slug}`,
+            },
     })
   }
   } 

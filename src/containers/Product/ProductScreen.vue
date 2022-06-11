@@ -253,13 +253,11 @@ export default {
   },
   async created() {
     const detailProduct = await getDetailProduct(this.slug);
-    this.product = detailProduct;   
-    console.log(this.product)
+    this.product = detailProduct;
   },
    methods: {
       formatMoney(money){
-         var formatter = new Intl.NumberFormat('en-US', {
-         });
+         var formatter = new Intl.NumberFormat('en-US');
          return formatter.format(money);
       },
       async addCard(product){

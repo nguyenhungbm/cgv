@@ -416,7 +416,6 @@ export default {
   async created() {
     const list = await getListDashboard();
     this.list = list;
-    console.log(list);
   },
 };
 </script>
